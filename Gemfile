@@ -36,6 +36,9 @@ gem 'bootstrap-sass'
 gem "jquery-rails"
 gem 'bcrypt'
 gem "carrierwave"
+gem "better_errors"
+gem "binding_of_caller"
+gem 'pry-byebug'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
@@ -57,6 +60,7 @@ group :development do
   gem 'pry-doc'
   gem 'pry-byebug'
   gem 'pry-stack_explorer'
+
 
 
 end

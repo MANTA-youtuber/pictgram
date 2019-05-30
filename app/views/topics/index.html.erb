@@ -19,11 +19,19 @@
                 <%= image_tag 'icons/heart-red.png', class: 'topic-index-icon' %>
               <% end %>
             <% end %>
-              <%= @favorite_count %>
+            <%=  @favorites_count %>
+
+
+            <%= link_to "/topics/#{topic.id}" do %>
             <%= image_tag 'icons/comment.png', class: 'topic-index-icon' %>
+            <% end %>
             <p class="topic-text">
               <%= topic.description %>
             </p>
+
+
+
+
           </div>
         </div>
       </div>

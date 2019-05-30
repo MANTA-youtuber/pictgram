@@ -1,6 +1,10 @@
 class TopicsController < ApplicationController
   def index
      @topics = Topic.all.includes(:favorite_users)
+     topics = Topic.where('id = ?', params[:id])
+     @favorites_count = Favorite.where(topics).count
+
+
    end
 
   def new
@@ -16,6 +20,12 @@ class TopicsController < ApplicationController
       flash.now[:danger] = "投稿に失敗しました"
       render :new
     end
+  end
+
+  def show
+    @topic = Topic.find_by(params[:id])
+
+
   end
 
 
