@@ -1,10 +1,6 @@
 class TopicsController < ApplicationController
   def index
      @topics = Topic.all.includes(:favorite_users)
-     topics = Topic.where('id = ?', params[:id])
-     @favorites_count = Favorite.where(topics).count
-
-
    end
 
   def new
@@ -13,7 +9,6 @@ class TopicsController < ApplicationController
 
   def create
     @topic = current_user.topics.new(topic_params)
-
     if @topic.save
       redirect_to topics_path, success: '投稿に成功しました'
     else
@@ -23,11 +18,12 @@ class TopicsController < ApplicationController
   end
 
   def show
-    @topic = Topic.find_by(params[:id])
-
+    @topic = Topic.find_by(id: params[:id])
+    @comment = Comment.new
+    @comment.topic_id = params[:topic_id]
+    @comment.user_id = session[:user_id]
 
   end
-
 
   private
   def topic_params

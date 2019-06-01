@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get 'topics/new'
   get 'topics/index'
   get 'topics/:id', to: 'topics#show'
-
+  
   get 'sessions/new'
   root 'pages#index'
   get 'users/new'

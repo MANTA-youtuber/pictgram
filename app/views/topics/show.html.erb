@@ -7,29 +7,30 @@
             <h2 class="topic-author">
               <%= @topic.user.name %>
             </h2>
-            <%= image_tag @topic.image.url %>
+
+              <%= image_tag @topic.image.url %>
+            
+
             <p class="topic-text">
               <%= @topic.description %>
             </p>
-            <p class="topic-text">
+
+            <p class="comment-top">
               コメント
             </p>
 
-              <% if @topic.comments.any? %>
-              <ul>
-                <% @topic.comments.each do |comment| %>
-                <li >
-                  <%= @topic.comment.content %>
-                </li>
-                <% end %>
-              </ul>
-              <% end %>
+            <% @topic.comments.each do |comment| %>
+              <p>
+                <%= comment.content %>
+              </p>
+            <% end %>
 
             <%= form_for [@topic, @topic.comments.build] do |f| %>
-
               <div class="form-group">
                 <%= f.label :コメント %>
                 <%= f.text_area :content, class: 'form-control' %>
+                <%= f.hidden_field :user_id, value: @comment.user_id %>
+                <%= f.hidden_field :topic_id, value: @comment.topic_id %>
               </div>
 
               <%= f.submit 'コメントする', class: 'btn btn-black btn-block' %>

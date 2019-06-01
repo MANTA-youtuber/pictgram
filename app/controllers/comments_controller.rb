@@ -1,19 +1,13 @@
 class CommentsController < ApplicationController
 
   def create
-    puts params[:topic_id]
     @topic = Topic.find(params[:topic_id])
+
     @topic.comments.create(comment_params)
-# binding.pry
-      flash[:notice] = 'コメントを投稿しました!'
-      redirect_to topic_path(@topic)
+
+      redirect_to topic_path(@topic),success: 'コメントを投稿しました!'
 
   end
-
-  def list
-    @comments = Comment.all
-  end
-
 
   private
   def comment_params
