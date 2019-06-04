@@ -38,7 +38,7 @@ gem "jquery-rails"
 gem "carrierwave"
 gem "better_errors"
 gem "binding_of_caller"
-gem 'pry-byebug'
+
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
