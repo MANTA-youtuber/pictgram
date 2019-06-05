@@ -9,7 +9,7 @@
             </h2>
 
               <%= image_tag @topic.image.url %>
-            
+
 
             <p class="topic-text">
               <%= @topic.description %>
@@ -20,9 +20,11 @@
             </p>
 
             <% @topic.comments.each do |comment| %>
+            <div class="box13">
               <p>
                 <%= comment.content %>
               </p>
+            </div>
             <% end %>
 
             <%= form_for [@topic, @topic.comments.build] do |f| %>
